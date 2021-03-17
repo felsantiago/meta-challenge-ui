@@ -14,7 +14,7 @@ const Footer = ({ text }) => {
           <Grid item xl={6} md={6} sm={12} xs={12} className={classes.gridVerticalAlign}>
             <div className={`${classes.logo} ${classes.mobileOnly}`}>
               <Image
-                src='/images/minu-club-primary.svg'
+                src='https://www.meta.com.br/wp-content/uploads/2021/01/1.png'
                 alt='meta'
                 width='100'
                 height='44'
@@ -22,7 +22,7 @@ const Footer = ({ text }) => {
             </div>
             <div className={`${classes.logo} ${classes.desktopOnly}`}>
               <Image
-                src='/images/minu-club-secondary.svg'
+                src='https://www.meta.com.br/wp-content/uploads/2021/01/1.png'
                 alt='meta'
                 width='100'
                 height='44'

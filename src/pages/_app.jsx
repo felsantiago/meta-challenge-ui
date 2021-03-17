@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import Router from 'next/router';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import GTMPageView from '../utils/gtm';
 import useRouterScroll from '../utils/UseRouterScroll';
@@ -29,11 +31,10 @@ const App = ({ Component, pageProps }) => {
     <GlobalStateProvider>
       <>
         <Head>
-          <script src='/scripts/newrelic.js' />
-          <script src='/scripts/amplitude.js' />
           <link rel='stylesheet' href='/css/global.css' />
         </Head>
         <UserTheme>
+          <ToastContainer autoClose={3000} />
           <Component {...pageProps} />
         </UserTheme>
       </>

@@ -16,6 +16,41 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '46px'
     }
   },
+  formControl: {
+    minWidth: '100%',
+    '& div': {
+      margin: '3px 0'
+    }
+  },
+  formControlSelect: {
+    minWidth: '100%',
+    marginBottom: '24px',
+    '& div': {
+      margin: '0px 0'
+    }
+  },
+  textField: {
+    marginBottom: '24px',
+    '& label': {
+      fontWeight: '400',
+      color: theme.palette.textField.labelColor
+    },
+    '& fieldset': {
+      borderColor: theme.palette.textField.borderColor
+    },
+    '& input': {
+      color: theme.palette.textField.text
+    },
+    '& label.Mui-focused': {
+      color: theme.palette.textField.text
+    },
+    '& .Mui-error fieldset': {
+      borderColor: theme.palette.basic.error
+    },
+    '& label.Mui-error': {
+      color: theme.palette.basic.error
+    }
+  },
   responsiveContainer: {
     display: 'flex',
     maxWidth: '884px',

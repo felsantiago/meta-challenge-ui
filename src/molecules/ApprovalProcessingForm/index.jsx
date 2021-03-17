@@ -53,9 +53,8 @@ const ProspectForm = ({ absolute }) => {
   const { dispatch } = useContext(AppContext);
   useEffect(() => {
     const handleDispatch = () => dispatch({
-      type: 'AUTH',
-      token,
-      isAuthenticated: true
+      type: 'TOKEN',
+      token
     });
     handleDispatch();
   }, [token]);

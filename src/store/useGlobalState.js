@@ -12,6 +12,13 @@ const reducer = (state, action) => {
         ...state,
         theme: action.theme
       };
+    case 'AUTH':
+      setSessionValue('auth', action.token);
+      return {
+        ...state,
+        token: action.token,
+        isAuthenticated: action.isAuthenticated
+      };
     default: {
       return state;
     }
@@ -20,7 +27,9 @@ const reducer = (state, action) => {
 
 const useGlobalState = () => {
   const [state, dispatch] = useReducer(reducer, {
-    theme: getSessionValue('theme')
+    theme: getSessionValue('theme'),
+    token: getSessionValue('token'),
+    isAuthenticated: getSessionValue('isAuthenticated')
   });
 
   return { state, dispatch };
