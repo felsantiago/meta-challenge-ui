@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -22,10 +20,8 @@ import Grid from '@material-ui/core/Grid';
 import { DataGrid } from '@material-ui/data-grid';
 import useStyles from './style';
 import TextField from '../../molecules/TextField';
-import api from '../../services/api';
 
 const RewardCloud = () => {
-  const router = useRouter();
   const [processings, setProcessings] = useState([]);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState(undefined);
@@ -37,20 +33,6 @@ const RewardCloud = () => {
     buyerName: false,
     description: false
   });
-
-  const token = getSessionValue('auth');
-
-  try {
-    useEffect(async () => {
-      await api.get('approval-processing', {
-        headers: {
-          Authorization: `bearer ${token}`
-        }
-      });
-    }, []);
-  } catch (err) {
-    toast.error('Erro ao buscar os dados.');
-  }
 
   const isValidData = () => valid && status && active && valid.email && valid.buyerName && valid.description;
 
@@ -142,37 +124,8 @@ const RewardCloud = () => {
     setOpen(false);
   };
 
-  const items = {
-    Ativo: 'ACTIVE',
-    Inativo: 'INACTIVE',
-    'Verificar e revisar': 'CHECK_AND_REVIEW',
-    'Aprovação do centro de custo': 'COST_CENTER_APPROVAL',
-    'Aprovação fiduciária': 'FIDUCIARY_APPROVAL',
-    'Aprovação do gerente de compras': 'PURCHASING_MANAGER_APPROVAL',
-    'Aprovação do CFO': 'CFO_APPROVAL',
-    Aprovada: 'APPROVED',
-    Rejeitada: 'REJECTED'
-  };
-
   const handleSubmit = async () => {
-    try {
-      await api.post('approval-processing', {
-        access: items[active],
-        status: items[status],
-        dueDate: selectedDate,
-        buyerName: fields.buyerName,
-        buyerEmail: fields.email,
-        description: fields.description
-      }, {
-        headers: {
-          Authorization: `bearer ${token}`
-        }
-      });
-
-      router.push('/processo-aprovacao');
-    } catch (err) {
-      toast.error('Não foi possível cadastrar.');
-    }
+    console.log('Cadastrar aqui');
   };
 
   return (
